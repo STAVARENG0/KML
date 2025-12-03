@@ -889,6 +889,7 @@
         noWeightLimit: "Sem limite de peso por caixa.",
         ctaText: "Agendar coleta",
         finePrint: "Valores e prazos podem variar conforme a cidade de coleta e o destino final no Brasil ou Europa. Confirme sempre com a central de atendimento.",
+        bookingSuccess: "Em até 48 horas entraremos em contato para marcar o dia da sua coleta. Muito obrigado!",
         footerText: "KML Transport · Envios e mudanças da Irlanda para o Brasil e Europa."
       },
       en: {
@@ -915,12 +916,16 @@
         noWeightLimit: "No weight limit per box.",
         ctaText: "Schedule pickup",
         finePrint: "Prices and delivery times may vary depending on pickup city and final destination. Always confirm with customer service.",
+        bookingSuccess: "Within 48 hours we will contact you to schedule your pickup date. Thank you!",
         footerText: "KML Transport · Shipments and relocations from Ireland to Brazil and Europe."
       }
     };
 
+    let currentLanguage = "pt";
+
     function applyLanguage(lang) {
       const dict = translations[lang] || translations.pt;
+      currentLanguage = lang;
       document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
 
       document.querySelectorAll("[data-i18n]").forEach((el) => {
@@ -1041,7 +1046,8 @@
             success.className = "form-success-message";
             bookingForm.parentElement.appendChild(success);
           }
-          success.textContent = "Em até 48 horas entraremos em contato para marcar o dia da sua coleta. Muito obrigado!";
+          const dict = translations[currentLanguage] || translations.pt;
+          success.textContent = dict.bookingSuccess || translations.pt.bookingSuccess;
         } catch (error) {
           console.error("Erro ao enviar formulário:", error);
           alert("Ocorreu um erro ao enviar seu pedido. Tente novamente em instantes.");
