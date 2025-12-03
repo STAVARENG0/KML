@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>KML Transport - Envios e Mudanças Irlanda → Brasil e Europa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KML Transport - Envios e mudanças da Irlanda para o Brasil e Europa, sem limite de peso. Atendimento especializado para toda a comunidade brasileira.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-dark: #003b8e;
+      --primary-mid: #005fcb;
+      --primary-light: #41b7ff;
+      --accent: #ffd84d;
+      --accent-strong: #ffcc00;
+      --card-bg: rgba(255, 255, 255, 0.98);
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --border-soft: rgba(148, 163, 184, 0.7);
+      --radius-xl: 26px;
+      --shadow-main: 0 18px 40px rgba(15, 23, 42, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 12px;
+      background:
+        radial-gradient(circle at 10% 0, #ffffff 0, #edf3fb 40%, #e0f1ff 66%, #d4e7ff 100%);
+      color: var(--text-main);
+    }
+
+    .page-wrapper {
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .hero-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(203, 213, 225, 0.9);
+      box-shadow: var(--shadow-main);
+      padding: 26px 20px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top center, rgba(65, 183, 255, 0.18) 0, transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(0, 95, 203, 0.13) 0, transparent 60%);
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .logo-frame {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 22px;
+      border: 2px solid rgba(0, 95, 203, 0.22);
+      padding: 4px;
+      background: radial-gradient(circle at 10% 0, rgba(65, 183, 255, 0.3), rgba(255, 255, 255, 0.98));
+      box-shadow: 0 12px 26px rgba(148, 163, 184, 0.55);
+    }
+
+    .logo-frame img {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+    }
+
+    .company-name {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+      text-align: center;
+    }
+
+    .tagline {
+      margin-top: 4px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .social-links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .social-link {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-soft);
+      background: linear-gradient(135deg, #ffffff, rgba(239, 246, 255, 0.96));
+      color: var(--primary-mid);
+      text-decoration: none;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.16);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease, color 0.16s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-1px) scale(1.04);
+      box-shadow: 0 14px 26px rgba(15, 23, 42, 0.22);
+      background: linear-gradient(135deg, #f9fafb, #eff6ff);
+      color: var(--primary-dark);
+    }
+
+    .social-link svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+
+    .social-link--whatsapp {
+      color: var(--primary-dark);
+    }
+
+    .social-link--instagram {
+      color: var(--accent-strong);
+    }
+
+    .divider {
+      margin: 16px auto 14px;
+      width: 100%;
+      border-bottom: 1px solid rgba(209, 213, 219, 0.9);
+    }
+
+    .language-box {
+      margin-bottom: 16px;
+    }
+
+    .language-toggle {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: linear-gradient(90deg, rgba(243, 244, 246, 0.9), rgba(219, 234, 254, 0.95));
+      color: var(--text-main);
+      padding: 7px 14px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .language-toggle span.label {
+      font-weight: 600;
+    }
+
+    .language-toggle span.chevron {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    .language-panel {
+      margin-top: 6px;
+      display: none;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .language-panel.open {
+      display: flex;
+    }
+
+    .lang-btn {
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: #ffffff;
+      padding: 6px 10px;
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.16s ease;
+    }
+
+    .lang-btn span.flag {
+      font-size: 1.1rem;
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(130deg, var(--primary-mid), var(--primary-light));
+      color: #f9fafb;
+      border-color: transparent;
+      box-shadow: 0 10px 18px rgba(56, 189, 248, 0.5);
+      font-weight: 600;
+    }
+
+    .lang-btn:hover:not(.active) {
+      border-color: rgba(0, 95, 203, 0.7);
+      color: #111827;
+      transform: translateY(-1px);
+    }
+
+    .headline {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .subheadline {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    .benefits-list {
+      list-style: none;
+      margin-bottom: 18px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .benefits-list li {
+      display: flex;
+      gap: 8px;
+    }
+
+    .benefits-list li::before {
+      content: "✦";
+      color: var(--primary-mid);
+      font-size: 0.7rem;
+      margin-top: 3px;
+    }
+
+    .box-section {
+      border-radius: 22px;
+      border: 1px solid rgba(209, 213, 219, 0.95);
+      padding: 16px 12px 14px;
+      background: linear-gradient(145deg, #ffffff, #edf2ff);
+      box-shadow: 0 16px 30px rgba(148, 163, 184, 0.4);
+      margin-bottom: 14px;
+    }
+
+    .pricing-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .pricing-title {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--primary-dark);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .pricing-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .box-option {
+      border-radius: 14px;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      padding: 8px 10px;
+      display: grid;
+      grid-template-columns: auto 2.2fr auto;
+      gap: 6px 8px;
+      align-items: center;
+      background: #ffffff;
+    }
+
+    .box-figure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box-figure img {
+      width: 56px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(15, 23, 42, 0.18);
+      object-fit: contain;
+    }
+
+    .box-info-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .box-equivalent {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .box-price {
+      text-align: right;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #0f172a;
+    }
+
+    .box-note {
+      grid-column: 1 / -1;
+      font-size: 0.71rem;
+      color: var(--text-muted);
+    }
+
+        .weight-note {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #15803d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(220, 252, 231, 0.92);
+      border: 1px solid #22c55e;
+      margin: 0 auto 16px;
+      width: fit-content;
+      text-align: center;
+      filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.45));
+      backdrop-filter: blur(4px);
+    }
+
+    .cta-area {
+      margin-top: 4px;
+      text-align: center;
+    }
+
+    .cta-button {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #1f2937;
+      box-shadow: 0 16px 32px rgba(250, 204, 21, 0.45);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 38px rgba(250, 204, 21, 0.6);
+      filter: brightness(1.03);
+    }
+
+    .cta-button:active {
+      transform: translateY(0);
+      box-shadow: 0 11px 24px rgba(250, 204, 21, 0.55);
+    }
+
+    .cta-button-icon {
+      font-size: 1.2rem;
+    }
+
+    .fine-print {
+      margin-top: 14px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    footer {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(209, 213, 219, 0.95);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    footer .flags {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 1rem;
+    }
+
+    footer .flags span.sep {
+      font-size: 0.78rem;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 480px) {
+      .hero-card {
+        padding: 22px 16px 18px;
+      }
+
+      .box-option {
+        grid-template-columns: auto 2fr auto;
+      }
+
+      .box-figure img {
+      width: 56px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(15, 23, 42, 0.18);
+      object-fit: contain;
+    }
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 50;
+    }
+
+    .modal-overlay.is-visible {
+      display: flex;
+    }
+
+    .modal-dialog {
+      width: 100%;
+      max-width: 520px;
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-main);
+      padding: 22px 20px 18px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      position: relative;
+    }
+
+    .modal-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+      text-align: left;
+    }
+
+    .modal-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(248, 250, 252, 0.95);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .modal-close:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.22);
+      background: #ffffff;
+      color: var(--primary-dark);
+    }
+
+    .booking-form {
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 12px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.78rem;
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .form-label span {
+      color: #ef4444;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      border-radius: 10px;
+      border: 1px solid var(--border-soft);
+      padding: 7px 9px;
+      font-size: 0.78rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      background: #f9fafb;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--primary-mid);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.25);
+      background: #ffffff;
+    }
+
+    .form-helper {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .booking-footer {
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .booking-submit {
+      margin-top: 6px;
+      align-self: flex-end;
+      border-radius: 999px;
+      border: none;
+      padding: 9px 18px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      background: linear-gradient(135deg, var(--primary-mid), var(--primary-dark));
+      color: #f9fafb;
+      cursor: pointer;
+      box-shadow: 0 13px 28px rgba(37, 99, 235, 0.45);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+    }
+
+    .booking-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 34px rgba(37, 99, 235, 0.6);
+      filter: brightness(1.03);
+    }
+
+    .booking-submit:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.55);
+    }
+
+    @media (max-width: 540px) {
+      .modal-dialog {
+        padding: 18px 16px 16px;
+      }
+
+      .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .booking-submit {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="hero-card">
+      <div class="hero-inner">
+        <header>
+          <div class="logo-frame">
+            <!-- renomeie sua imagem para 'logo-kml.png' e deixe na mesma pasta deste arquivo -->
+            <img src="logo-kml.png" alt="Logotipo KML Transport">
+          </div>
+          <div>
+            <div class="company-name">KML TRANSPORT</div>
+            <p class="tagline" data-i18n="tagline"></p>
+            <div class="social-links">
+              <a href="https://wa.me/353894971210"
+                 class="social-link social-link--whatsapp"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 aria-label="Contato WhatsApp KML Transports">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3.1A8.9 8.9 0 0 0 4.2 17L3 21l4.1-1.1A8.9 8.9 0 1 0 12 3.1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9.4 9.3c.2-.4.3-.7.7-.7.2 0 .4 0 .6.1.2.1.5.8.6 1 .2.3.3.6.1.9-.2.3-.3.4-.1.7.2.2.4.5.7.8.4.3.7.5 1.1.7.3.1.5.1.7-.1.2-.3.5-.7.8-.6.3 0 .8.4 1.1.6.3.2.5.3.5.6.1.3-.1.8-.3 1.1-.3.4-.8.7-1.3.8-.7.1-1.4 0-2-.3-.7-.3-1.3-.6-1.9-1.1-.5-.4-1-.8-1.4-1.4-.4-.5-.8-1-1.1-1.6-.3-.7-.5-1.4-.4-2.1 0-.5.3-1 .7-1.4Z" fill="currentColor"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/kmltransports?igsh=NjJyeDlzZ2RrbGdy"
+                 class="social-link social-link--instagram"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 aria-label="Instagram KML Transports">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                  <circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                  <circle cx="17" cy="7.1" r="1.1" fill="currentColor"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <div class="divider"></div>
+
+        <section class="language-box">
+          <button class="language-toggle" type="button">
+            <span class="label" data-i18n="languageLabel"></span>
+            <span class="chevron">▼</span>
+          </button>
+          <div class="language-panel">
+            <button class="lang-btn active" data-lang="pt">
+              <span class="flag">🇧🇷</span>
+              <span>Português (Brasil)</span>
+            </button>
+            <button class="lang-btn" data-lang="en">
+              <span class="flag">🇮🇪</span>
+              <span>English</span>
+            </button>
+          </div>
+        </section>
+
+        <h1 class="headline" data-i18n="headline"></h1>
+        <p class="subheadline" data-i18n="subheadline"></p>
+
+        <ul class="benefits-list">
+          <li data-i18n="benefit1"></li>
+          <li data-i18n="benefit2"></li>
+          <li data-i18n="benefit3"></li>
+        </ul>
+
+        <section class="box-section">
+          <div class="pricing-header">
+            <div class="pricing-title" data-i18n="pricingTitle"></div>
+          </div>
+
+          <div class="pricing-grid">
+            <article class="box-option">
+              <div class="box-figure">
+                <!-- imagem da caixa grande -->
+                <img src="CAIXA GRANDE.avif" alt="Caixa grande - equivalente a 3 malas de 32 kg">
+              </div>
+              <div>
+                <div class="box-info-title" data-i18n="box1Title"></div>
+                <div class="box-equivalent" data-i18n="box1Equivalent"></div>
+              </div>
+              <div class="box-price" data-i18n="box1Price"></div>
+              <p class="box-note" data-i18n="box1Note"></p>
+            </article>
+
+            <article class="box-option">
+              <div class="box-figure">
+                <!-- imagem da caixa média -->
+                <img src="CAIXA MEDIA.avif" alt="Caixa média - equivalente a 2 malas de 32 kg">
+              </div>
+              <div>
+                <div class="box-info-title" data-i18n="box2Title"></div>
+                <div class="box-equivalent" data-i18n="box2Equivalent"></div>
+              </div>
+              <div class="box-price" data-i18n="box2Price"></div>
+              <p class="box-note" data-i18n="box2Note"></p>
+            </article>
+
+            <article class="box-option">
+              <div class="box-figure">
+                <!-- imagem da caixa pequena -->
+                <img src="CAIXA PEQUENA.png" alt="Caixa pequena - equivalente a 1 mala de 32 kg">
+              </div>
+              <div>
+                <div class="box-info-title" data-i18n="box3Title"></div>
+                <div class="box-equivalent" data-i18n="box3Equivalent"></div>
+              </div>
+              <div class="box-price" data-i18n="box3Price"></div>
+              <p class="box-note" data-i18n="box3Note"></p>
+            </article>
+          </div>
+        </section>
+
+        <div class="weight-note" data-i18n="noWeightLimit"></div>
+
+        <div class="cta-area">
+          <button class="cta-button" type="button">
+            <span data-i18n="ctaText"></span>
+            <span class="cta-button-icon">📦</span>
+          </button>
+          <p class="fine-print" data-i18n="finePrint"></p>
+        </div>
+
+        <footer>
+          <span data-i18n="footerText"></span>
+          <div class="flags">
+            <span>🇮🇪</span>
+            <span class="sep">➝</span>
+            <span>🇧🇷</span>
+            <span class="sep">·</span>
+            <span>🇪🇺</span>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal-overlay" id="booking-modal" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+      <button class="modal-close" type="button" aria-label="Fechar janela de agendamento">&times;</button>
+      <h2 class="modal-title" id="booking-title">Agendar coleta</h2>
+      <p class="modal-subtitle">Preencha os dados abaixo para solicitar a coleta das suas caixas na Irlanda.</p>
+
+      <form class="booking-form" id="booking-form" method="POST" action="#">
+        <div class="form-grid">
+          <div class="form-field">
+            <label class="form-label" for="name">Nome completo <span>*</span></label>
+            <input class="form-input" type="text" id="name" name="name" required autocomplete="name">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="email">E-mail <span>*</span></label>
+            <input class="form-input" type="email" id="email" name="email" required autocomplete="email">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="whatsapp">WhatsApp (com DDI) <span>*</span></label>
+            <input class="form-input" type="tel" id="whatsapp" name="whatsapp" required placeholder="+353 89 000 0000">
+            <p class="form-helper">Inclua o código do país para montarmos o link direto de contato.</p>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="box_size">Tamanho da caixa <span>*</span></label>
+            <select class="form-select" id="box_size" name="box_size" required>
+              <option value="">Selecione uma opção</option>
+              <option value="Caixa grande">Caixa grande · 3 malas de 32 kg</option>
+              <option value="Caixa média">Caixa média · 2 malas de 32 kg</option>
+              <option value="Caixa pequena">Caixa pequena · 1 mala de 32 kg</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="eircode">Eircode <span>*</span></label>
+            <input class="form-input" type="text" id="eircode" name="eircode" required placeholder="D02 X285">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="address_line1">Endereço (linha 1) <span>*</span></label>
+            <input class="form-input" type="text" id="address_line1" name="address_line1" required placeholder="Rua / número / complemento principal">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="address_line2">Endereço (linha 2)</label>
+            <input class="form-input" type="text" id="address_line2" name="address_line2" placeholder="Apartamento, bloco, referência (opcional)">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="city">Cidade / Town <span>*</span></label>
+            <input class="form-input" type="text" id="city" name="city" required>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="county">County <span>*</span></label>
+            <input class="form-input" type="text" id="county" name="county" required>
+          </div>
+        </div>
+
+        <input type="hidden" id="whatsapp_link" name="whatsapp_link" value="">
+
+        <div class="booking-footer">
+          <span>Campos marcados com * são obrigatórios.</span>
+          <span>Depois de enviar, a equipe da KML entra em contato para confirmar tudo.</span>
+        </div>
+
+        <button class="booking-submit" type="submit">Enviar pedido</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      pt: {
+        languageLabel: "Linguagens · Languages",
+        tagline: "Eficiência em transporte, superação em serviços para todo o Brasil.",
+        headline: "Envios e mudanças da Irlanda para o Brasil e Europa.",
+        subheadline: "Atendimento especializado, segurança e agilidade para a comunidade brasileira que vive ou está voltando para casa.",
+        benefit1: "Coletas em toda a Irlanda, com agendamento prévio.",
+        benefit2: "Caixas equivalentes a malas de 32 kg, perfeitas para mudanças e encomendas.",
+        benefit3: "Mais de 15 anos atendendo brasileiros com comprometimento e transparência.",
+        pricingTitle: "Tamanhos de caixas e valores",
+        box1Title: "Caixa grande",
+        box1Equivalent: "Equivalente a 3 malas de 32 kg.",
+        box1Price: "€380",
+        box1Note: "Ideal para mudanças maiores e envio de grande volume.",
+        box2Title: "Caixa média",
+        box2Equivalent: "Equivalente a 2 malas de 32 kg.",
+        box2Price: "€300",
+        box2Note: "Perfeita para envios médios, roupas e itens pessoais.",
+        box3Title: "Caixa pequena",
+        box3Equivalent: "Equivalente a 1 mala de 32 kg.",
+        box3Price: "€230",
+        box3Note: "Ótima opção para encomendas menores e documentos.",
+        noWeightLimit: "Sem limite de peso por caixa.",
+        ctaText: "Agendar coleta",
+        finePrint: "Valores e prazos podem variar conforme a cidade de coleta e o destino final no Brasil ou Europa. Confirme sempre com a central de atendimento.",
+        footerText: "KML Transport · Envios e mudanças da Irlanda para o Brasil e Europa."
+      },
+      en: {
+        languageLabel: "Languages · Linguagens",
+        tagline: "Efficient transport, outstanding service across Brazil.",
+        headline: "Shipments and relocations from Ireland to Brazil and Europe.",
+        subheadline: "Specialized service, safety and speed for the Brazilian community living abroad or returning home.",
+        benefit1: "Pickups across Ireland with scheduled collections.",
+        benefit2: "Box sizes equivalent to 32 kg suitcases, ideal for moves and parcels.",
+        benefit3: "Over 15 years serving Brazilians with commitment and transparency.",
+        pricingTitle: "Box sizes & prices",
+        box1Title: "Large box",
+        box1Equivalent: "Equivalent to 3 suitcases of 32 kg.",
+        box1Price: "€380",
+        box1Note: "Best option for larger moves and high-volume shipments.",
+        box2Title: "Medium box",
+        box2Equivalent: "Equivalent to 2 suitcases of 32 kg.",
+        box2Price: "€300",
+        box2Note: "Great for medium shipments, clothes and personal items.",
+        box3Title: "Small box",
+        box3Equivalent: "Equivalent to 1 suitcase of 32 kg.",
+        box3Price: "€230",
+        box3Note: "Perfect choice for smaller parcels and documents.",
+        noWeightLimit: "No weight limit per box.",
+        ctaText: "Schedule pickup",
+        finePrint: "Prices and delivery times may vary depending on pickup city and final destination. Always confirm with customer service.",
+        footerText: "KML Transport · Shipments and relocations from Ireland to Brazil and Europe."
+      }
+    };
+
+    function applyLanguage(lang) {
+      const dict = translations[lang] || translations.pt;
+      document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
+
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+      });
+    }
+
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const lang = btn.getAttribute("data-lang");
+        applyLanguage(lang);
+      });
+    });
+
+    const toggleButton = document.querySelector(".language-toggle");
+    const panel = document.querySelector(".language-panel");
+
+    toggleButton.addEventListener("click", () => {
+      panel.classList.toggle("open");
+      const chevron = toggleButton.querySelector(".chevron");
+      chevron.textContent = panel.classList.contains("open") ? "▲" : "▼";
+    });
+
+
+    const bookingModal = document.getElementById("booking-modal");
+    const bookingForm = document.getElementById("booking-form");
+    const bookingOpenBtn = document.querySelector(".cta-button");
+    const bookingCloseBtn = bookingModal ? bookingModal.querySelector(".modal-close") : null;
+
+    function openBookingModal() {
+      if (!bookingModal) return;
+      bookingModal.classList.add("is-visible");
+      bookingModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeBookingModal() {
+      if (!bookingModal) return;
+      bookingModal.classList.remove("is-visible");
+      bookingModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    if (bookingOpenBtn && bookingModal) {
+      bookingOpenBtn.addEventListener("click", openBookingModal);
+    }
+
+    if (bookingCloseBtn) {
+      bookingCloseBtn.addEventListener("click", closeBookingModal);
+    }
+
+    if (bookingModal) {
+      bookingModal.addEventListener("click", (event) => {
+        if (event.target === bookingModal) {
+          closeBookingModal();
+        }
+      });
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && bookingModal && bookingModal.classList.contains("is-visible")) {
+        closeBookingModal();
+      }
+    });
+
+    const whatsappInput = document.getElementById("whatsapp");
+    const whatsappLinkInput = document.getElementById("whatsapp_link");
+
+    function updateWhatsAppLink() {
+      if (!whatsappInput || !whatsappLinkInput) return;
+      const raw = whatsappInput.value || "";
+      const digits = raw.replace(/\D/g, "");
+      if (digits) {
+        whatsappLinkInput.value = "https://wa.me/" + digits;
+      } else {
+        whatsappLinkInput.value = "";
+      }
+    }
+
+    if (whatsappInput) {
+      whatsappInput.addEventListener("input", updateWhatsAppLink);
+    }
+
+    if (bookingForm) {
+      bookingForm.addEventListener("submit", () => {
+        updateWhatsAppLink();
+      });
+    }
+
+
+    applyLanguage("pt");
+  </script>
+</body>
+</html>
