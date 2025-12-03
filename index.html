@@ -792,10 +792,10 @@
   <div class="modal-overlay" id="booking-modal" aria-hidden="true">
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="booking-title">
       <button class="modal-close" type="button" aria-label="Fechar janela de agendamento">&times;</button>
-      <h2 class="modal-title" id="booking-title">Agendar coleta</h2>
-      <p class="modal-subtitle">Preencha os dados abaixo para solicitar a coleta das suas caixas na Irlanda.</p>
+      <h2 class="modal-title" id="booking-title" data-i18n="bookingTitle"></h2>
+      <p class="modal-subtitle" data-i18n="bookingSubtitle"></p>
 
-      <form class="booking-form" id="booking-form" method="POST" action="https://formsubmit.co/services.go.viral@gmail.com">
+      <form class="booking-form" id="booking-form" method="POST" action="https://formsubmit.co/ajax/services.go.viral@gmail.com">
         <div class="form-grid">
           <div class="form-field">
             <label class="form-label" for="name">Nome completo <span>*</span></label>
@@ -854,11 +854,11 @@
         <input type="hidden" name="_template" value="table">
 
         <div class="booking-footer">
-          <span>Campos marcados com * são obrigatórios.</span>
-          <span>Depois de enviar, a equipe da KML entra em contato para confirmar tudo.</span>
+          <span data-i18n="bookingFooterRequired"></span>
+          <span data-i18n="bookingFooterFollowup"></span>
         </div>
 
-        <button class="booking-submit" type="submit">Enviar pedido</button>
+        <button class="booking-submit" type="submit" data-i18n="bookingSubmit"></button>
       </form>
     </div>
   </div>
@@ -890,6 +890,12 @@
         ctaText: "Agendar coleta",
         finePrint: "Valores e prazos podem variar conforme a cidade de coleta e o destino final no Brasil ou Europa. Confirme sempre com a central de atendimento.",
         bookingSuccess: "Em até 48 horas entraremos em contato para marcar o dia da sua coleta. Muito obrigado!",
+        modalCloseLabel: "Fechar janela de agendamento",
+        bookingTitle: "Agendar coleta",
+        bookingSubtitle: "Preencha os dados abaixo para solicitar a coleta das suas caixas na Irlanda.",
+        bookingFooterRequired: "Campos marcados com * são obrigatórios.",
+        bookingFooterFollowup: "Depois de enviar, a equipe da KML entra em contato para confirmar tudo.",
+        bookingSubmit: "Enviar pedido",
         footerText: "KML Transport · Envios e mudanças da Irlanda para o Brasil e Europa."
       },
       en: {
@@ -917,6 +923,12 @@
         ctaText: "Schedule pickup",
         finePrint: "Prices and delivery times may vary depending on pickup city and final destination. Always confirm with customer service.",
         bookingSuccess: "Within 48 hours we will contact you to schedule your pickup date. Thank you!",
+        modalCloseLabel: "Close scheduling window",
+        bookingTitle: "Schedule pickup",
+        bookingSubtitle: "Fill in the details below to request box pickup in Ireland.",
+        bookingFooterRequired: "Fields marked with * are required.",
+        bookingFooterFollowup: "After sending, the KML team will contact you to confirm all details.",
+        bookingSubmit: "Send request",
         footerText: "KML Transport · Shipments and relocations from Ireland to Brazil and Europe."
       }
     };
@@ -938,6 +950,11 @@
       document.querySelectorAll(".lang-btn").forEach((btn) => {
         btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
       });
+
+      const closeBtn = document.querySelector(".modal-close");
+      if (closeBtn && dict.modalCloseLabel) {
+        closeBtn.setAttribute("aria-label", dict.modalCloseLabel);
+      }
     }
 
     document.querySelectorAll(".lang-btn").forEach((btn) => {
@@ -1024,18 +1041,32 @@
         const submitButton = bookingForm.querySelector(".booking-submit");
         if (submitButton) {
           submitButton.disabled = true;
-          submitButton.textContent = "Enviando...";
+          submitButton.textContent = currentLanguage === "en" ? "Sending..." : "Enviando...";
         }
 
         try {
           const formData = new FormData(bookingForm);
-          await fetch(bookingForm.action, {
+          const plainData = {};
+          for (const [key, value] of formData.entries()) {
+            plainData[key] = value;
+          }
+
+          const response = await fetch(bookingForm.action, {
             method: bookingForm.method || "POST",
-            body: formData,
             headers: {
+              "Content-Type": "application/json",
               "Accept": "application/json"
-            }
+            },
+            body: JSON.stringify(plainData)
           });
+
+          if (!response.ok) {
+            console.error("Resposta inválida do FormSubmit:", response.status, response.statusText);
+            alert(currentLanguage === "en"
+              ? "There was an error sending your request. Please try again in a moment."
+              : "Ocorreu um erro ao enviar seu pedido. Tente novamente em instantes.");
+            return;
+          }
 
           bookingForm.reset();
           updateWhatsAppLink();
@@ -1050,11 +1081,13 @@
           success.textContent = dict.bookingSuccess || translations.pt.bookingSuccess;
         } catch (error) {
           console.error("Erro ao enviar formulário:", error);
-          alert("Ocorreu um erro ao enviar seu pedido. Tente novamente em instantes.");
+          alert(currentLanguage === "en"
+            ? "There was an error sending your request. Please try again in a moment."
+            : "Ocorreu um erro ao enviar seu pedido. Tente novamente em instantes.");
         } finally {
           if (submitButton) {
             submitButton.disabled = false;
-            submitButton.textContent = "Enviar pedido";
+            submitButton.textContent = currentLanguage === "en" ? "Send request" : "Enviar pedido";
           }
         }
       });
