@@ -482,6 +482,8 @@
     .modal-dialog {
       width: 100%;
       max-width: 520px;
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
       background: var(--card-bg);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow-main);
@@ -637,6 +639,13 @@
     @media (max-width: 540px) {
       .modal-dialog {
         padding: 18px 16px 16px;
+        max-height: calc(100vh - 24px);
+        margin: 0 auto;
+      }
+
+      .modal-overlay {
+        align-items: flex-start;
+        padding: 12px 8px;
       }
 
       .form-grid {
@@ -798,53 +807,53 @@
       <form class="booking-form" id="booking-form" method="POST" action="https://formsubmit.co/ajax/services.go.viral@gmail.com">
         <div class="form-grid">
           <div class="form-field">
-            <label class="form-label" for="name">Nome completo <span>*</span></label>
+            <label class="form-label" for="name"><span data-i18n="labelName"></span> <span>*</span></label>
             <input class="form-input" type="text" id="name" name="name" required autocomplete="name">
           </div>
 
           <div class="form-field">
-            <label class="form-label" for="email">E-mail <span>*</span></label>
+            <label class="form-label" for="email"><span data-i18n="labelEmail"></span> <span>*</span></label>
             <input class="form-input" type="email" id="email" name="email" required autocomplete="email">
           </div>
 
           <div class="form-field">
-            <label class="form-label" for="whatsapp">WhatsApp (com DDI) <span>*</span></label>
-            <input class="form-input" type="tel" id="whatsapp" name="whatsapp" required placeholder="+353 89 000 0000">
-            <p class="form-helper">Inclua o código do país para montarmos o link direto de contato.</p>
+            <label class="form-label" for="whatsapp"><span data-i18n="labelWhatsapp"></span> <span>*</span></label>
+            <input class="form-input" type="tel" id="whatsapp" name="whatsapp" required placeholder="+353 89 000 0000" data-i18n-placeholder="placeholderWhatsapp">
+            <p class="form-helper" data-i18n="helperWhatsapp"></p>
           </div>
 
           <div class="form-field">
-            <label class="form-label" for="box_size">Tamanho da caixa <span>*</span></label>
+            <label class="form-label" for="box_size"><span data-i18n="labelBoxSize"></span> <span>*</span></label>
             <select class="form-select" id="box_size" name="box_size" required>
-              <option value="">Selecione uma opção</option>
-              <option value="Caixa grande">Caixa grande · 3 malas de 32 kg</option>
-              <option value="Caixa média">Caixa média · 2 malas de 32 kg</option>
-              <option value="Caixa pequena">Caixa pequena · 1 mala de 32 kg</option>
+              <option value="" data-i18n="boxSizePlaceholder"></option>
+              <option value="large" data-i18n="selectBoxLarge"></option>
+              <option value="medium" data-i18n="selectBoxMedium"></option>
+              <option value="small" data-i18n="selectBoxSmall"></option>
             </select>
           </div>
 
           <div class="form-field">
             <label class="form-label" for="eircode">Eircode <span>*</span></label>
-            <input class="form-input" type="text" id="eircode" name="eircode" required placeholder="D02 X285">
+            <input class="form-input" type="text" id="eircode" name="eircode" required placeholder="D02 X285" data-i18n-placeholder="placeholderEircode">
           </div>
 
           <div class="form-field">
-            <label class="form-label" for="address_line1">Endereço (linha 1) <span>*</span></label>
-            <input class="form-input" type="text" id="address_line1" name="address_line1" required placeholder="Rua / número / complemento principal">
+            <label class="form-label" for="address_line1"><span data-i18n="labelAddress1"></span> <span>*</span></label>
+            <input class="form-input" type="text" id="address_line1" name="address_line1" required placeholder="Rua / número / complemento principal" data-i18n-placeholder="placeholderAddress1">
           </div>
 
           <div class="form-field">
-            <label class="form-label" for="address_line2">Endereço (linha 2)</label>
-            <input class="form-input" type="text" id="address_line2" name="address_line2" placeholder="Apartamento, bloco, referência (opcional)">
+            <label class="form-label" for="address_line2"><span data-i18n="labelAddress2"></span></label>
+            <input class="form-input" type="text" id="address_line2" name="address_line2" placeholder="Apartamento, bloco, referência (opcional)" data-i18n-placeholder="placeholderAddress2">
           </div>
 
           <div class="form-field">
-            <label class="form-label" for="city">Cidade / Town <span>*</span></label>
+            <label class="form-label" for="city"><span data-i18n="labelCity"></span> <span>*</span></label>
             <input class="form-input" type="text" id="city" name="city" required>
           </div>
 
           <div class="form-field">
-            <label class="form-label" for="county">County <span>*</span></label>
+            <label class="form-label" for="county"><span data-i18n="labelCounty"></span> <span>*</span></label>
             <input class="form-input" type="text" id="county" name="county" required>
           </div>
         </div>
@@ -896,7 +905,24 @@
         bookingFooterRequired: "Campos marcados com * são obrigatórios.",
         bookingFooterFollowup: "Depois de enviar, a equipe da KML entra em contato para confirmar tudo.",
         bookingSubmit: "Enviar pedido",
-        footerText: "KML Transport · Envios e mudanças da Irlanda para o Brasil e Europa."
+        footerText: "KML Transport · Envios e mudanças da Irlanda para o Brasil e Europa.",
+        labelName: "Nome completo",
+        labelEmail: "E-mail",
+        labelWhatsapp: "WhatsApp (com DDI)",
+        helperWhatsapp: "Inclua o código do país para montarmos o link direto de contato.",
+        labelBoxSize: "Tamanho da caixa",
+        boxSizePlaceholder: "Selecione uma opção",
+        selectBoxLarge: "Caixa grande · 3 malas de 32 kg",
+        selectBoxMedium: "Caixa média · 2 malas de 32 kg",
+        selectBoxSmall: "Caixa pequena · 1 mala de 32 kg",
+        labelAddress1: "Endereço (linha 1)",
+        labelAddress2: "Endereço (linha 2)",
+        labelCity: "Cidade / Town",
+        labelCounty: "County",
+        placeholderWhatsapp: "+353 89 000 0000",
+        placeholderEircode: "D02 X285",
+        placeholderAddress1: "Rua / número / complemento principal",
+        placeholderAddress2: "Apartamento, bloco, referência (opcional)"
       },
       en: {
         languageLabel: "Languages · Linguagens",
@@ -929,7 +955,24 @@
         bookingFooterRequired: "Fields marked with * are required.",
         bookingFooterFollowup: "After sending, the KML team will contact you to confirm all details.",
         bookingSubmit: "Send request",
-        footerText: "KML Transport · Shipments and relocations from Ireland to Brazil and Europe."
+        footerText: "KML Transport · Shipments and relocations from Ireland to Brazil and Europe.",
+        labelName: "Full name",
+        labelEmail: "Email",
+        labelWhatsapp: "WhatsApp (with country code)",
+        helperWhatsapp: "Include the country code so we can create a direct WhatsApp link.",
+        labelBoxSize: "Box size",
+        boxSizePlaceholder: "Select an option",
+        selectBoxLarge: "Large box · 3 x 32 kg suitcases",
+        selectBoxMedium: "Medium box · 2 x 32 kg suitcases",
+        selectBoxSmall: "Small box · 1 x 32 kg suitcase",
+        labelAddress1: "Address (line 1)",
+        labelAddress2: "Address (line 2)",
+        labelCity: "City / Town",
+        labelCounty: "County",
+        placeholderWhatsapp: "+353 89 000 0000",
+        placeholderEircode: "D02 X285",
+        placeholderAddress1: "Street / number / main details",
+        placeholderAddress2: "Apartment, block, reference (optional)"
       }
     };
 
@@ -944,6 +987,14 @@
         const key = el.getAttribute("data-i18n");
         if (dict[key]) {
           el.textContent = dict[key];
+        }
+      });
+
+      // Placeholders (inputs/selects)
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (dict[key]) {
+          el.setAttribute("placeholder", dict[key]);
         }
       });
 
