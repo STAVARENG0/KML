@@ -585,6 +585,17 @@
       color: var(--text-muted);
     }
 
+    .form-success-message {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: #166534;
+      background: #ecfdf5;
+      border-radius: 12px;
+      padding: 10px 12px;
+      border: 1px solid #22c55e;
+      text-align: left;
+    }
+
     .booking-footer {
       margin-top: 6px;
       display: flex;
@@ -784,7 +795,7 @@
       <h2 class="modal-title" id="booking-title">Agendar coleta</h2>
       <p class="modal-subtitle">Preencha os dados abaixo para solicitar a coleta das suas caixas na Irlanda.</p>
 
-      <form class="booking-form" id="booking-form" method="POST" action="#">
+      <form class="booking-form" id="booking-form" method="POST" action="https://formsubmit.co/services.go.viral@gmail.com">
         <div class="form-grid">
           <div class="form-field">
             <label class="form-label" for="name">Nome completo <span>*</span></label>
@@ -839,6 +850,8 @@
         </div>
 
         <input type="hidden" id="whatsapp_link" name="whatsapp_link" value="">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
 
         <div class="booking-footer">
           <span>Campos marcados com * são obrigatórios.</span>
@@ -999,8 +1012,45 @@
     }
 
     if (bookingForm) {
-      bookingForm.addEventListener("submit", () => {
+      bookingForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
         updateWhatsAppLink();
+
+        const submitButton = bookingForm.querySelector(".booking-submit");
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = "Enviando...";
+        }
+
+        try {
+          const formData = new FormData(bookingForm);
+          await fetch(bookingForm.action, {
+            method: bookingForm.method || "POST",
+            body: formData,
+            headers: {
+              "Accept": "application/json"
+            }
+          });
+
+          bookingForm.reset();
+          updateWhatsAppLink();
+
+          let success = bookingModal.querySelector(".form-success-message");
+          if (!success) {
+            success = document.createElement("p");
+            success.className = "form-success-message";
+            bookingForm.parentElement.appendChild(success);
+          }
+          success.textContent = "Em até 48 horas entraremos em contato para marcar o dia da sua coleta. Muito obrigado!";
+        } catch (error) {
+          console.error("Erro ao enviar formulário:", error);
+          alert("Ocorreu um erro ao enviar seu pedido. Tente novamente em instantes.");
+        } finally {
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = "Enviar pedido";
+          }
+        }
       });
     }
 
